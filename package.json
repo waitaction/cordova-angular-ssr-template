@@ -2,18 +2,24 @@
   "name": "angular-ssr-template",
   "version": "1.0.0",
   "scripts": {
+    "start:browser:dev": "node ./hooks/compile-hook/debug-browser.js",
+    "build:browser": "node ./hooks/compile-hook/build-browser.js",
+    "start:android:dev": "node ./hooks/compile-hook/debug-android.js",
+    "build:android": "node ./hooks/compile-hook/build-android.js",
+    "start:ios:dev": "node ./hooks/compile-hook/debug-ios.js",
+    "build:ios": "node ./hooks/compile-hook/build-ios.js",
+    "build:all": "node ./hooks/compile-hook/build-all.js",
+    "test:api": "node ./hooks/compile-hook/test-api.js",
+    "test:e2e": "node ./hooks/compile-hook/test-e2e.js",
+    "test:component": "node ./hooks/compile-hook/test-component.js",
+    "stats": "ng build --prod --stats-json && webpack-bundle-analyzer www/stats-es2015.json",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "dev:ssr": "ng run angular-ssr-template:serve-ssr",
-    "serve:ssr": "node dist/angular-ssr-template/server/main.js",
-    "build:ssr": "ng build --prod && ng run angular-ssr-template:server:production",
-    "prerender": "ng run angular-ssr-template:prerender"
+    "e2e": "ng e2e"
   },
- 
   "dependencies": {
     "@angular/animations": "^10.0.1",
     "@angular/common": "^10.0.1",

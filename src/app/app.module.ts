@@ -6,9 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TransferHttpModule, CookieModule, TransferHttpService } from '@gorniv/ngx-universal';
-import { UniversalStorageService } from 'src/core/universal-storage.service';
-import { UniversalToolService } from 'src/core/universal-tool.service';
-import { ClientStateInterceptor } from 'src/core/clientstate.interceptor';
+import { ClientStateInterceptor } from '@core/clientstate.interceptor';
+import { UniversalStorageService } from '@core/universal-storage.service';
+import { UniversalToolService } from '@core/universal-tool.service';
 
 @NgModule({
   declarations: [

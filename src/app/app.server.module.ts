@@ -4,7 +4,8 @@ import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { CookieService, CookieBackendService } from '@gorniv/ngx-universal';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ServerStateInterceptor } from 'src/core/serverstate.interceptor';
+import { ServerStateInterceptor } from '@core/serverstate.interceptor';
+
 
 @NgModule({
   imports: [
@@ -18,4 +19,4 @@ import { ServerStateInterceptor } from 'src/core/serverstate.interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: ServerStateInterceptor, multi: true }
   ],
 })
-export class AppServerModule {}
+export class AppServerModule { }

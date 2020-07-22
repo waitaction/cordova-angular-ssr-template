@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+/*修复cordova的启动屏可能导致显示异常*/
+html body > div[style*="99999"] {
+    display: none;
+
+    > img[src="screen"] {
+        display: none;
+    }
+}
+
+/*cordova在浏览选照片的input*/
+.cordova-camera-select {
+    display: none;
+}
