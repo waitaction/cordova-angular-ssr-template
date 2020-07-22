@@ -13,7 +13,7 @@ import * as cookieparser from 'cookie-parser';
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/angular-ssr-template/browser');
+  const distFolder = join(process.cwd(), 'www');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)

@@ -54,6 +54,28 @@ npm run start:android:dev
 `build.json` 的配置细节请参考 `cordova` 官网
 
 [安卓编译配置官方参考文档](https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html)
+
 [iOS编译配置官方参考文档](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html)
+
 [桌面应用编译配置官方参考文档](https://cordova.apache.org/docs/en/latest/guide/platforms/electron/index.html)
 
+## 部署到服务器
+
+服务器环境要求
+
+| 环境        | 版本                                                            |
+|-------------|-----------------------------------------------------------------|
+| iis         | ≥7.0                                                            |
+| node        | ≥v12.13.0                                                       |
+| iisnode     | ≥0.2.26 (full-x64)                                              |
+| url-rewrite | [需要最新版](https://www.iis.net/downloads/microsoft/url-rewrite) |
+
+> iisnode 下载地址 `https://github.com/Azure/iisnode`
+1.iis站点权限要配置 `IIS_USER` 可读写
+
+2. 应用程序池 NET CLR版本修改为 `无托管`
+3. 应用程序池模式修改为 `经典`
+4. 应用程序池标识修改为 `ApplicationPoolIdentity`
+5. 运行命令行 `%windir%\system32\inetsrv\appcmd unlock config -section:system.webServer/handlers`
+
+## 疑问解答

@@ -6,7 +6,9 @@ import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { CookieService } from '@gorniv/ngx-universal';
 import { environment } from '@environments/environment';
 import { UniversalToolService } from './universal-tool.service';
-
+/**
+ * 服务端和客户端都会执行
+ */
 @Injectable()
 export class ClientStateInterceptor implements HttpInterceptor {
 
@@ -17,8 +19,8 @@ export class ClientStateInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let self = this;
-        (req as any).responseType = "json";
-        (req.headers as any) = req.headers.set('Authorization', 'Bearer ' + '');
+        //(req as any).responseType = "json";//响应类型
+        //(req.headers as any) = req.headers.set('Authorization', 'Bearer ' + ''); //鉴权
         const storedResponse: string = this.transferState.get(makeStateKey(self.universalTool.computedUrlKey(req.url)), null);
         if (storedResponse) {
             const response = new HttpResponse({ body: storedResponse, status: 200 });

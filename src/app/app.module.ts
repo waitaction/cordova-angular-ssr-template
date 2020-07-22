@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TransferHttpModule, CookieModule, TransferHttpService } from '@gorniv/ngx-universal';
 import { ClientStateInterceptor } from '@core/clientstate.interceptor';
 import { UniversalStorageService } from '@core/universal-storage.service';
 import { UniversalToolService } from '@core/universal-tool.service';
+import { Router } from 'express';
+import { LocalRouteReuseStrategy } from '@core/location.reusestrategy';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { UniversalToolService } from '@core/universal-tool.service';
   providers: [
     TransferHttpService,
     { provide: HTTP_INTERCEPTORS, useClass: ClientStateInterceptor, multi: true },
+    // { provide: RouteReuseStrategy, useClass: LocalRouteReuseStrategy },
     UniversalStorageService,
     UniversalToolService
   ],
