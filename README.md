@@ -1,6 +1,13 @@
 # 统一平台
 
-一套代码，可以运行在浏览器（服务端渲染）、浏览器（客户端渲染）、安卓、苹果、window 桌面应用 、mac os 桌面应用 、linux 桌面应用。
+ **一套框架，多种平台**
+ **移动端 & 桌面端 & 服务端**
+
+一套框架，可以编写*浏览器、安卓、苹果、 桌面*以及*服务端应用*
+
+> 桌面端支持window、mac、各种主流linux发行版
+
+> 服务端支持api接口、html服务端渲染
 
 ## 开发环境要求
 
@@ -25,7 +32,6 @@
 | npm run build:android     | 编译安卓应用                                                       |
 | npm run start:ios:dev     | 调试苹果应用                                                       |
 | npm run build:ios         | 编译苹果应用(需配置开发者签名)                                       |
-| npm run build:nswag       | 生成后端api接口的代理类                                             |
 
 ### 如何调试
 
@@ -78,4 +84,3 @@ npm run start:android:dev
 4. 应用程序池标识修改为 `ApplicationPoolIdentity`
 5. 运行命令行 `%windir%\system32\inetsrv\appcmd unlock config -section:system.webServer/handlers`
 
-## 疑问解答
