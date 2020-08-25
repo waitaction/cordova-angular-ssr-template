@@ -27,6 +27,9 @@
       ],
       "@environments/*": [
         "./src/environments/*"
+      ],
+      "@type/*": [
+        "./src/@types/*"
       ]
     }
   },

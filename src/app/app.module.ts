@@ -9,8 +9,7 @@ import { TransferHttpModule, CookieModule, TransferHttpService } from '@gorniv/n
 import { ClientStateInterceptor } from '@core/clientstate.interceptor';
 import { UniversalStorageService } from '@core/universal-storage.service';
 import { UniversalToolService } from '@core/universal-tool.service';
-import { Router } from 'express';
-import { LocalRouteReuseStrategy } from '@core/location.reusestrategy';
+import { AppRouterReuseStrategy } from './app-router.reusestrategy';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,7 @@ import { LocalRouteReuseStrategy } from '@core/location.reusestrategy';
   providers: [
     TransferHttpService,
     { provide: HTTP_INTERCEPTORS, useClass: ClientStateInterceptor, multi: true },
-    // { provide: RouteReuseStrategy, useClass: LocalRouteReuseStrategy },
+    { provide: RouteReuseStrategy, useClass: AppRouterReuseStrategy },
     UniversalStorageService,
     UniversalToolService
   ],
