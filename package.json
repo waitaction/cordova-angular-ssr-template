@@ -44,7 +44,7 @@
     "@nestjs/typeorm": "^7.1.4",
     "@nguniversal/express-engine": "^9.1.1",
     "@types/cordova": "0.0.34",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "class-validator": "^0.9.1",
     "cookie-parser": "^1.4.5",
     "cordova-android": "^8.1.0",
