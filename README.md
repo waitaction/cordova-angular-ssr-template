@@ -1,5 +1,7 @@
 # 统一平台
 
+## 重构中
+
  **一套框架，多种平台**
  **移动端 & 桌面端 & 服务端**
 
@@ -83,4 +85,3 @@ npm run start:android:dev
 3. 应用程序池模式修改为 `经典`
 4. 应用程序池标识修改为 `ApplicationPoolIdentity`
 5. 运行命令行 `%windir%\system32\inetsrv\appcmd unlock config -section:system.webServer/handlers`
-
