@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AngularUniversalModule } from '@nestjs/ng-universal';
 import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
 import { join } from 'path';
 import { AppServerModule } from '../src/main.server';
@@ -11,6 +10,7 @@ import { Menu } from './rbac/system/menus/entities/menu.entity';
 import { Organization } from './rbac/system/organization/entities/organization.entity';
 import { Role } from './rbac/system/roles/entities/role.entity';
 import { User } from './rbac/system/users/entities/user.entity';
+import { AngularUniversalModule } from '@waitaction/nestjs-ng-universal/dist/angular-universal.module';
 
 @Module({
   imports: [

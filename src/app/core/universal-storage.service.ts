@@ -11,48 +11,29 @@ export class UniversalStorageService implements Storage {
     length: number;
     cookies: any;
 
-    isServer: boolean = false;
-    constructor(private cookieService: CookieService) {
-        if (!((typeof window != 'undefined') && window)) {
-            this.isServer = true;
-        }
-    }
+    constructor(private cookieService: CookieService) { }
 
     clear(): void {
-        if (!this.isServer) {
-            this.cookieService.removeAll();
-        }
+        this.cookieService.removeAll();
     }
 
     getAll(): any {
-        if (!this.isServer) {
-            return this.cookieService.getAll();
-        }
+        return this.cookieService.getAll();
     }
 
     getItem(key: string): string {
-        if (!this.isServer) {
-            return this.cookieService.get(key);
-        }
+        return this.cookieService.get(key);
     }
 
     key(index: number): string {
-        if (!this.isServer) {
-            return this.cookieService.getAll().propertyIsEnumerable[index];
-        }
-
+        return this.cookieService.getAll().propertyIsEnumerable[index];
     }
 
     removeItem(key: string): void {
-        if (!this.isServer) {
-            this.cookieService.remove(key);
-        }
+        this.cookieService.remove(key);
     }
 
     setItem(key: string, data: string): void {
-        if (!this.isServer) {
-            this.cookieService.put(key, data);
-        }
-
+        this.cookieService.put(key, data);
     }
 }
