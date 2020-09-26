@@ -16,15 +16,18 @@ import { User } from './rbac/system/users/entities/user.entity';
   imports: [
     AngularUniversalModule.forRoot({
       bootstrap: AppServerModule,
-      viewsPath: join(process.cwd(), 'dist/app/browser')
+      viewsPath: join(process.cwd(), 'dist/app/browser'),
+      extraProviders: [
+
+      ]
     }),
     TypeOrmModule.forRoot({
       type: "mysql",
-      host: "",
+      host: "localhost",
       port: 3306,
       username: "root",
-      password: "",
-      database: "",
+      password: "123456abc",
+      database: "demo-ssr",
       entities: [
         Action,
         Menu,
@@ -40,4 +43,6 @@ import { User } from './rbac/system/users/entities/user.entity';
   ],
   controllers: [CatsController]
 })
-export class AppModule { }
+export class AppModule {
+
+}

@@ -9,7 +9,7 @@ import { XPortalOverlayRef } from '@ng-nest/ui/portal';
 import { FloatNodeComponent } from './sider/float-node/float-node.component';
 import { Subject } from 'rxjs';
 import { NavService } from '../../services/nav.service';
-import { environment } from '@environments/environment';
+import { environment } from './../../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class IndexService {

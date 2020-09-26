@@ -3,14 +3,24 @@
   "compilerOptions": {
     "outDir": "./out-tsc/app-server",
     "module": "commonjs",
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "paths": {
-      "@ng-nest/api/core": ["./server/core"]
+      "@ng-nest/api/core": [
+        "./server/rbac/core"
+      ]
     }
   },
-  "files": ["src/main.server.ts", "server.ts"],
+  "exclude": [
+    "./src"
+  ],
+  "files": [
+    "src/main.server.ts",
+    "server.ts"
+  ],
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.server.module#AppServerModule"
   }

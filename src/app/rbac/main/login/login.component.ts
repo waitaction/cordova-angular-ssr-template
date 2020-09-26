@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder } from '@angular/forms';
 import { XMessageService } from '@ng-nest/ui/message';
-import { environment } from '@environments/environment';
+import { environment } from './../../../../environments/environment';
 
 @Component({
   selector: 'app-login',

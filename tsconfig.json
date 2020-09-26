@@ -17,19 +17,19 @@
     ],
     "paths": {
       "@lib/*": [
-        "./src/lib/*"
+        "src/lib/*"
       ],
       "@shared/*": [
-        "./src/app/shared/*"
+        "src/app/shared/*"
       ],
       "@core/*": [
-        "./src/app/core/*"
+        "src/app/core/*"
       ],
       "@environments/*": [
-        "./src/environments/*"
+        "src/environments/*"
       ],
       "@type/*": [
-        "./src/@types/*"
+        "src/@types/*"
       ]
     }
   },

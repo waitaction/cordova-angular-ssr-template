@@ -4,7 +4,7 @@ import { Observable, of, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/internal/operators";
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 import { CookieService } from '@gorniv/ngx-universal';
-import { environment } from '@environments/environment';
+import { environment } from 'src/environments/environment';
 import { UniversalToolService } from './universal-tool.service';
 /**
  * 服务端和客户端都会执行

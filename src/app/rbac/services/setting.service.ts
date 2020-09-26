@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { UniversalStorageService } from 'src/app/core/universal-storage.service';
+
 import * as _ from 'lodash';
 
 /**
@@ -10,7 +12,9 @@ import * as _ from 'lodash';
  */
 @Injectable({ providedIn: 'root' })
 export class SettingService {
-  constructor() { }
+  constructor(
+    public universalStorageService: UniversalStorageService
+  ) { }
 
   /**
    * 获取本地值
@@ -20,11 +24,7 @@ export class SettingService {
    * @memberof SettingsService
    */
   getLocal(key: string) {
-    if ((typeof window != 'undefined') && window) {
-      return JSON.parse(localStorage.getItem(key) || 'null') || null;
-    } else {
-      return null;
-    }
+    return JSON.parse(this.universalStorageService.getItem(key) || 'null') || null;
   }
 
   /**
@@ -35,7 +35,7 @@ export class SettingService {
    * @memberof SettingsService
    */
   setLocal(key: string, value: any) {
-    localStorage.setItem(key, JSON.stringify(value));
+    this.universalStorageService.setItem(key, JSON.stringify(value));
   }
 
   /**
@@ -46,7 +46,7 @@ export class SettingService {
    * @memberof SettingsService
    */
   getSession(key: string) {
-    return JSON.parse(sessionStorage.getItem(key) || 'null') || null;
+    return JSON.parse(this.universalStorageService.getItem(key) || 'null') || null;
   }
 
   /**
@@ -57,7 +57,8 @@ export class SettingService {
    * @memberof SettingsService
    */
   setSession(key: string, value: any) {
-    sessionStorage.setItem(key, JSON.stringify(value));
+    this.universalStorageService.setItem(key, JSON.stringify(value))
+    // sessionStorage.setItem(key, JSON.stringify(value));
   }
 
   /**
@@ -67,7 +68,8 @@ export class SettingService {
    * @memberof SettingsService
    */
   removeLocal(key: string) {
-    localStorage.removeItem(key);
+    // localStorage.removeItem(key);
+    this.universalStorageService.removeItem(key);
   }
 
   /**
@@ -77,7 +79,8 @@ export class SettingService {
    * @memberof SettingsService
    */
   removeSession(key: string) {
-    sessionStorage.removeItem(key);
+    // sessionStorage.removeItem(key);
+    this.universalStorageService.removeItem(key);
   }
 
   /**

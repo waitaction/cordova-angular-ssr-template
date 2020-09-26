@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild, CanLoad, Route } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
-
 import { find } from 'lodash';
-import { environment } from '@environments/environment';
+import { environment } from './../../../environments/environment';
+
+
 /**
  * 路由守卫
  *
