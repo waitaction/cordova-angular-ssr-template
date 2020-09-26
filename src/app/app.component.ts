@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { routerAnimations } from './app-router.animations';
+import { ConfigService } from './rbac/services/config.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  animations: [routerAnimations]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'cordova-angular-ssr-template';
-  constructor() {
-
-  }
-
-  prepareRoute(outlet: RouterOutlet): boolean {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  title = 'ng-nest-admin-ui';
+  constructor(private config: ConfigService) {
+    this.config.init();
   }
 }

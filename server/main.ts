@@ -14,7 +14,7 @@ async function bootstrap() {
     .addTag('ng-nest-admin-api')
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  (SwaggerModule as any).setupExpress('swagger', app, document);
+  SwaggerModule.setup('swagger', app, document);
   await app.listen(process.env.PORT || 4000);
 }
 

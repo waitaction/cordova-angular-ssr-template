@@ -1,14 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
-/*修复cordova的启动屏可能导致显示异常*/
-html body > div[style*="99999"] {
-    display: none;
 
-    > img[src="screen"] {
-        display: none;
-    }
+@import './styles/index';
+@import './styles/core/index';
+@font-face {
+  font-family: 'ubuntu';
+  src: url('assets/fonts/ubuntu.eot?#') format('eot'), url('assets/fonts/ubuntu.ttf') format('truetype'),
+    url('assets/fonts/ubuntu.woff') format('woff'), url('assets/fonts/ubuntu.svg#ubuntu') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
-/*cordova在浏览选照片的input*/
-.cordova-camera-select {
-    display: none;
+*:focus {
+  outline: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body,
+input,
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.4s;
+  color: $--x-primary;
+  &:hover {
+    color: $--x-primary;
+  }
+}
+
+code,
+pre,
+tt {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+}
+
+html {
+  font-family: ubuntu, -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
 }

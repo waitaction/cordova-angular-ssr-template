@@ -1,37 +1,29 @@
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TransferHttpModule, CookieModule, TransferHttpService } from '@gorniv/ngx-universal';
-import { ClientStateInterceptor } from '@core/clientstate.interceptor';
-import { UniversalStorageService } from '@core/universal-storage.service';
-import { UniversalToolService } from '@core/universal-tool.service';
-import { AppRouterReuseStrategy } from './app-router.reusestrategy';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+
+import { AppRoutesModule } from './app-routing.module';
+
+function fixedUniversal() {
+  if (!((typeof window != 'undefined') && window)) {
+    //ng-nest在服务端渲染时会执行getComputedStyle这个方法，导致报错
+    globalThis.getComputedStyle = function () {
+      return null;
+    };
+  }
+}
+
+fixedUniversal();
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TransferHttpModule,
-    BrowserTransferStateModule,
-    CookieModule.forRoot()
+    AppRoutesModule
   ],
-  providers: [
-    TransferHttpService,
-    { provide: HTTP_INTERCEPTORS, useClass: ClientStateInterceptor, multi: true },
-    { provide: RouteReuseStrategy, useClass: AppRouterReuseStrategy },
-    UniversalStorageService,
-    UniversalToolService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

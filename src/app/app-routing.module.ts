@@ -1,29 +1,21 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/main',
-    pathMatch: 'full'
-  },
-  {
-    path: 'main',
-    loadChildren: () => import('./main/main.module').then(m => m.MainModule)
-  },
-  {
-    path: 'info',
-    loadChildren: () => import('./info/info.module').then(m => m.InfoModule)
-  }
-];
+import { NgModule } from "@angular/core";
+import { RouterModule, RouteReuseStrategy } from "@angular/router";
+import { mainRoutes } from "./rbac/rbac-routes";
+import { PreloadingStrategyService } from './rbac/services/preloading-strategy.service';
+import { ReuseStrategyService } from './rbac/services/reuse-strategy.service';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})
+    RouterModule.forRoot(mainRoutes, {
+      enableTracing: false,
+      anchorScrolling: "enabled",
+      preloadingStrategy: PreloadingStrategyService
+    })
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    PreloadingStrategyService,
+    { provide: RouteReuseStrategy, useClass: ReuseStrategyService }
+  ]
 })
-export class AppRoutingModule { }
+export class AppRoutesModule { }

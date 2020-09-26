@@ -1,0 +1,10 @@
+au-tool {
+  display: flex;
+  justify-content: space-between;
+  &[top] {
+    margin-bottom: 0.875rem;
+  }
+  &[bottom] {
+    margin-top: 0.875rem;
+  }
+}

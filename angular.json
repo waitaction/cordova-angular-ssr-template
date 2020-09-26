@@ -168,11 +168,15 @@
               "@nestjs/microservices/microservices-module",
               "@nestjs/websockets",
               "@nestjs/websockets/socket-module",
+              "@nestjs/passport",
               "cache-manager",
               "@nestjs/swagger",
               "@nestjs/typeorm",
               "swagger-ui-express",
-              "mysql"
+              "mysql",
+              "jsonwebtoken",
+              "passport",
+              "passport-jwt"
             ]
           },
           "configurations": {
