@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild, CanLoad, Route } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { find } from 'lodash';
 import { environment } from './../../../environments/environment';
+import { BaseUniversal } from 'src/app/base-universal';
 
 
 /**
@@ -15,8 +16,13 @@ import { environment } from './../../../environments/environment';
  * @implements {CanActivateChild}
  */
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  constructor(public authService: AuthService, public router: Router) { }
+export class AuthGuard extends BaseUniversal implements CanActivate, CanActivateChild, CanLoad {
+  constructor(
+    public authService: AuthService,
+    public router: Router,
+    public injector: Injector) {
+    super(injector);
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
     return this.checkLogin(state.url);
@@ -27,6 +33,9 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   checkLogin(url: string) {
+    if (this.isServer) {
+      return;
+    }
     if (this.authService.isLoggedIn || this.authService.user.token) {
       return true;
     }
@@ -36,6 +45,9 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   checkModule(route: Route) {
+    if (this.isServer) {
+      return;
+    }
     if (route.path === environment.layout || find(this.authService.user.permissions?.menus, (x) => x.router === route.path)) {
       return true;
     }

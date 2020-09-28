@@ -1,12 +1,14 @@
+import { Injector } from '@angular/core';
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { BaseUniversal } from 'src/app/base-universal';
 import { HttpService } from './http.service';
 import { SettingService } from './setting.service';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService {
+export class AuthService extends BaseUniversal {
   // 存储的KEY
   key = 'Auth';
 
@@ -44,9 +46,15 @@ export class AuthService {
     this.settingService.removeSession(this.key);
   }
 
-  constructor(public httpService: HttpService, public settingService: SettingService) {
-    if (this.user.account && this.user.token) {
-      this.isLoggedIn = true;
+  constructor(
+    public httpService: HttpService,
+    public settingService: SettingService,
+    public injector: Injector) {
+    super(injector)
+    if (this.isBrowser) {
+      if (this.user.account && this.user.token) {
+        this.isLoggedIn = true;
+      }
     }
   }
 

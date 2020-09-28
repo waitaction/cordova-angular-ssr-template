@@ -1,14 +1,15 @@
-import { Injectable, Inject, RendererFactory2, Renderer2 } from '@angular/core';
+import { Injectable, Inject, RendererFactory2, Renderer2, Injector } from '@angular/core';
 import { XConfigService, X_THEME_DARK_COLORS, X_THEME_COLORS } from '@ng-nest/ui/core';
 import { SettingService } from './setting.service';
 import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
+import { BaseUniversal } from 'src/app/base-universal';
 
 @Injectable({ providedIn: 'root' })
-export class ConfigService {
+export class ConfigService extends BaseUniversal {
 
 
-  private _dark = Boolean(this.settingService.getLocal('Dark')) || false;
+  private _dark;
   public get dark() {
     return this._dark;
   }
@@ -25,9 +26,15 @@ export class ConfigService {
     public renderFac: RendererFactory2,
     public configService: XConfigService,
     public settingService: SettingService,
-    @Inject(DOCUMENT) public doc: Document
+    @Inject(DOCUMENT) public doc: Document,
+    public injector: Injector
   ) {
-    this.renderer = this.renderFac.createRenderer(null, null);
+    super(injector);
+    if (this.isBrowser) {
+      this._dark = Boolean(this.settingService.getLocal('Dark')) || false;
+      this.renderer = this.renderFac.createRenderer(null, null);
+    }
+
   }
   init() {
     if ((typeof window != 'undefined') && window) {

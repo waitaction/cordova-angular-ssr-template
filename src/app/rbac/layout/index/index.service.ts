@@ -10,6 +10,7 @@ import { FloatNodeComponent } from './sider/float-node/float-node.component';
 import { Subject } from 'rxjs';
 import { NavService } from '../../services/nav.service';
 import { environment } from './../../../../environments/environment';
+import { UniversalStorageService } from 'src/app/core/universal-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class IndexService {
@@ -44,6 +45,7 @@ export class IndexService {
   constructor(
     public auth: AuthService,
     public settings: SettingService,
+    public universalStorage: UniversalStorageService,
     public router: Router,
     public nav: NavService,
     public activtedRouter: ActivatedRoute
@@ -58,9 +60,11 @@ export class IndexService {
           siderShrink: false,
           defaultPage: environment.defaultPage
         },
-        this.settings.getLocal(this.key)
+        //this.settings.getLocal(this.key)
+        this.universalStorage.getItem(this.key)
       );
-      this.settings.setLocal(this.key, this._local);
+      this.universalStorage.setItemObject(this.key, this._local);
+      //this.settings.setLocal(this.key, this._local);
     }
     return this._local;
   }
@@ -70,12 +74,13 @@ export class IndexService {
       this._local
         ? this._local
         : <Local>{
-            siderShrink: false,
-            defaultPage: environment.defaultPage
-          },
+          siderShrink: false,
+          defaultPage: environment.defaultPage
+        },
       value
     );
-    this.settings.setLocal(this.key, this._local);
+    // this.settings.setLocal(this.key, this._local);
+    this.universalStorage.setItemObject(this.key, this._local);
   }
 
   get session(): Session {
@@ -86,6 +91,7 @@ export class IndexService {
           tabsPage: []
         },
         this.settings.getSession(this.key)
+
       );
       this.settings.setSession(this.key, this._session);
     }
@@ -97,9 +103,9 @@ export class IndexService {
       this._session
         ? this._session
         : <Session>{
-            activatedPage: environment.defaultPage,
-            tabsPage: []
-          },
+          activatedPage: environment.defaultPage,
+          tabsPage: []
+        },
       value
     );
     this.settings.setSession(this.key, this._session);

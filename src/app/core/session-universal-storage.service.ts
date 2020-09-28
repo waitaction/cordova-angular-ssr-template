@@ -5,7 +5,7 @@ import { CookieService } from '@gorniv/ngx-universal';
  * 统一平台存储类，前端渲染与服务端渲染共用存储，目前以cookie为存储方案，这也是最佳方案
  */
 @Injectable()
-export class UniversalStorageService implements Storage {
+export class SessionUniversalStorageService__ implements Storage {
     [index: number]: string;
     [key: string]: any;
     length: number;
@@ -22,11 +22,11 @@ export class UniversalStorageService implements Storage {
     }
 
     getItem(key: string): string {
-        return this.cookieService.get(key);
+        return this.cookieService.get("session_" + key);
     }
     getItemObject(key: string): any {
         try {
-            let result = this.cookieService.get(key);
+            let result = this.cookieService.get("session_" + key);
             return JSON.parse(result);
         } catch (error) {
             return null;
@@ -39,13 +39,13 @@ export class UniversalStorageService implements Storage {
     }
 
     removeItem(key: string): void {
-        this.cookieService.remove(key);
+        this.cookieService.remove("session_" + key);
     }
 
     setItem(key: string, data: string): void {
-        this.cookieService.put(key, data);
+        this.cookieService.put("session_" + key, data);
     }
     setItemObject(key: string, data: any): void {
-        this.cookieService.put(key, JSON.stringify(data));
+        this.cookieService.put("session_" + key, JSON.stringify(data));
     }
 }

@@ -6,10 +6,10 @@ import { AppRoutesModule } from './app-routing.module';
 import { ShareModule } from './rbac/share/share.module';
 import { UniversalStorageService } from 'src/app/core/universal-storage.service';
 import { CookieModule, TransferHttpModule, TransferHttpService } from '@gorniv/ngx-universal';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { ClientStateInterceptor } from 'src/app/core/clientstate.interceptor';
 import { UniversalToolService } from 'src/app/core/universal-tool.service';
+
 
 function fixedUniversal() {
   if (!((typeof window != 'undefined') && window)) {
@@ -37,10 +37,11 @@ fixedUniversal();
   ],
   providers: [
     TransferHttpService,
-   // { provide: HTTP_INTERCEPTORS, useClass: ClientStateInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ClientStateInterceptor, multi: true },
     // { provide: RouteReuseStrategy, useClass: LocalRouteReuseStrategy },
     UniversalStorageService,
-    UniversalToolService
+    UniversalToolService,
+    // SessionUniversalStorageService
   ],
   bootstrap: [AppComponent]
 })
