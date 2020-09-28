@@ -37,7 +37,7 @@ fixedUniversal();
   ],
   providers: [
     TransferHttpService,
-    { provide: HTTP_INTERCEPTORS, useClass: ClientStateInterceptor, multi: true },
+   // { provide: HTTP_INTERCEPTORS, useClass: ClientStateInterceptor, multi: true },
     // { provide: RouteReuseStrategy, useClass: LocalRouteReuseStrategy },
     UniversalStorageService,
     UniversalToolService

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, getManager, Like } from 'typeorm';
-import { XRepositoryService, XQuery, XIdType } from '@ng-nest/api/core';
 import { Organization } from './entities/organization.entity';
 import { orderBy } from 'lodash';
+import { XIdType, XQuery, XRepositoryService } from 'server/rbac/core';
 
 @Injectable()
 export class OrganizationService extends XRepositoryService<Organization, XQuery> {

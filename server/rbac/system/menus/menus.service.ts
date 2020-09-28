@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, getManager, Like, ObjectID } from 'typeorm';
-import { XRepositoryService, XQuery, XIdType } from '@ng-nest/api/core';
+import { Repository, getManager, Like } from 'typeorm';
 import { Menu } from './entities/menu.entity';
 import { Action } from '../../system/actions/entities/action.entity';
 import { filter, find, orderBy } from 'lodash';
+import { XIdType, XQuery, XRepositoryService } from 'server/rbac/core';
 
 @Injectable()
 export class MenusService extends XRepositoryService<Menu, XQuery> {

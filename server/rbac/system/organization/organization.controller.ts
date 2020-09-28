@@ -1,5 +1,5 @@
 import { Controller, UseGuards } from '@nestjs/common';
-import { XControllerService, XQuery } from '@ng-nest/api/core';
+import { XControllerService, XQuery } from 'server/rbac/core';
 import { Organization } from './entities/organization.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { OrganizationService } from './organization.service';

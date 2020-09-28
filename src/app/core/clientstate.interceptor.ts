@@ -21,6 +21,19 @@ export class ClientStateInterceptor implements HttpInterceptor {
         let self = this;
         //(req as any).responseType = "json";//响应类型
         //(req.headers as any) = req.headers.set('Authorization', 'Bearer ' + ''); //鉴权
+        if (req.method != "GET") {
+            return next.handle(req).pipe(
+                tap(event => {
+                    if (event instanceof HttpResponse && event.status == 200) {
+                        return this.handleData(event);
+                    } else {
+                        return of(event);
+                    }
+                }),
+                catchError((err: HttpErrorResponse) => this.handleData(err))
+            );
+        }
+
         const storedResponse: string = this.transferState.get(makeStateKey(self.universalTool.computedUrlKey(req.url)), null);
         if (storedResponse) {
             const response = new HttpResponse({ body: storedResponse, status: 200 });

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { XQuery, XRepositoryService } from 'server/rbac/core';
 import { Repository } from 'typeorm';
-import { XRepositoryService, XQuery } from '@ng-nest/api/core';
 import { Action } from './entities/action.entity';
-import { XResultList } from '@ng-nest/api/core';
+
 
 export interface ActionQuery {
   menuId: string;

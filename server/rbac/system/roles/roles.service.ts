@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, ObjectID } from 'typeorm';
-import { XRepositoryService, XQuery, XIdType } from '@ng-nest/api/core';
+import { Repository } from 'typeorm';
 import { Role } from './entities/role.entity';
 import { Action } from '../actions/entities/action.entity';
 import { filter, find, remove } from 'lodash';
+import { XIdType, XQuery, XRepositoryService } from 'server/rbac/core';
 
 @Injectable()
 export class RolesService extends XRepositoryService<Role, XQuery> {

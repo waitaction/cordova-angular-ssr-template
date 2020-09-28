@@ -12,10 +12,12 @@ import { CookieService, CookieBackendService } from '@gorniv/ngx-universal';
     ServerModule,
     ServerTransferStateModule
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent
+  ],
   providers: [
     { provide: CookieService, useClass: CookieBackendService },
-    { provide: HTTP_INTERCEPTORS, useClass: ServerStateInterceptor, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: ServerStateInterceptor, multi: true }
   ],
 })
 export class AppServerModule { }

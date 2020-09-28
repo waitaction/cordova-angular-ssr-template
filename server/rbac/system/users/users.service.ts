@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { XIdType, XQuery, XRepositoryService } from 'server/rbac/core';
 import { Repository } from 'typeorm';
-import { XRepositoryService, XQuery, XIdType } from '@ng-nest/api/core';
 import { User } from './entities/user.entity';
 
 @Injectable()

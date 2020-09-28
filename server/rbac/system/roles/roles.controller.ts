@@ -1,9 +1,9 @@
 import { Controller, Get, Param, Put, Body, UseGuards } from '@nestjs/common';
-import { XControllerService, XQuery, XIdType } from '@ng-nest/api/core';
 import { Role } from './entities/role.entity';
 import { RolesService } from './roles.service';
 import { Action } from '../actions/entities/action.entity';
 import { AuthGuard } from '@nestjs/passport';
+import { XControllerService, XIdType, XQuery } from 'server/rbac/core';
 
 @Controller('roles')
 @UseGuards(AuthGuard('jwt'))
