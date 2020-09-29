@@ -1,8 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, RouteReuseStrategy } from "@angular/router";
-import { mainRoutes } from "./rbac/rbac-routes";
-import { PreloadingStrategyService } from './rbac/services/preloading-strategy.service';
-import { ReuseStrategyService } from './rbac/services/reuse-strategy.service';
+import { mainRoutes } from 'rbac/ui/rbac-routes';
+import { PreloadingStrategyService } from 'rbac/ui/services/preloading-strategy.service';
+import { ReuseStrategyService } from 'rbac/ui/services/reuse-strategy.service';
+
 
 @NgModule({
   imports: [

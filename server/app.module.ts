@@ -2,14 +2,14 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
 import { join } from 'path';
 import { AppServerModule } from '../src/main.server';
-import { AuthModule } from './rbac/auth/auth.module';
+import { AuthModule } from 'rbac/api/auth/auth.module';
 import { CatsController } from './cats/cats.controller';
-import { SystemModule } from './rbac/system/system.module';
-import { Action } from './rbac/system/actions/entities/action.entity';
-import { Menu } from './rbac/system/menus/entities/menu.entity';
-import { Organization } from './rbac/system/organization/entities/organization.entity';
-import { Role } from './rbac/system/roles/entities/role.entity';
-import { User } from './rbac/system/users/entities/user.entity';
+import { SystemModule } from 'rbac/api/system/system.module';
+import { Action } from 'entities/action.entity';
+import { Menu } from 'entities/menu.entity';
+import { Organization } from 'entities/organization.entity';
+import { Role } from 'entities/role.entity';
+import { User } from 'entities/user.entity';
 import { AngularUniversalModule } from '@waitaction/nestjs-ng-universal/dist/angular-universal.module';
 
 @Module({

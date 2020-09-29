@@ -3,12 +3,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutesModule } from './app-routing.module';
-import { ShareModule } from './rbac/share/share.module';
 import { UniversalStorageService } from 'src/app/core/universal-storage.service';
 import { CookieModule, TransferHttpModule, TransferHttpService } from '@gorniv/ngx-universal';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { UniversalToolService } from 'src/app/core/universal-tool.service';
+import { ShareModule } from 'rbac/ui/share/share.module';
 
 
 function fixedUniversal() {

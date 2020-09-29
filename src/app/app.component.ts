@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ConfigService } from './rbac/services/config.service';
+import { ConfigService } from 'rbac/ui/services/config.service';
+ 
 
 
 @Component({
