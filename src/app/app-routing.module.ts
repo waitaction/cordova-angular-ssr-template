@@ -1,22 +1,24 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, RouteReuseStrategy } from "@angular/router";
-import { mainRoutes } from 'rbac/ui/rbac-routes';
-import { PreloadingStrategyService } from 'rbac/ui/services/preloading-strategy.service';
-import { ReuseStrategyService } from 'rbac/ui/services/reuse-strategy.service';
-
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(mainRoutes, {
-      enableTracing: false,
-      anchorScrolling: "enabled",
-      preloadingStrategy: PreloadingStrategyService
-    })
+    RouterModule.forRoot([
+      { path: '', loadChildren: () => import('./main/main.module').then(m => m.MainModule) },
+      // app路由
+      { path: 'info', loadChildren: () => import('./info/info.module').then(m => m.InfoModule) },
+      { path: 'list', loadChildren: () => import('./list/list.module').then(m => m.ListModule) },
+      // rbac权限系统
+      { path: 'admin', loadChildren: () => import('rbac/ui/rbac.module').then(m => m.RbacModule) }
+    ],
+      { initialNavigation: 'enabled' })
   ],
   exports: [RouterModule],
   providers: [
-    PreloadingStrategyService,
-    { provide: RouteReuseStrategy, useClass: ReuseStrategyService }
+
   ]
 })
-export class AppRoutesModule { }
+export class AppRoutingModule { }
+
+
+

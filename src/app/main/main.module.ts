@@ -1,21 +1,17 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
-import { FormsModule } from "@angular/forms";
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MainComponent } from './main.component';
 @NgModule({
-  declarations: [],
+  declarations: [
+    MainComponent
+  ],
   imports: [
     CommonModule,
-    FormsModule,
     RouterModule.forChild([
-      {
-        path: "",
-        loadChildren: () =>
-          import("./index/index.module").then((m) => m.IndexModule),
-      }
- 
-    ]),
+      { path: '', component: MainComponent, data: { state: 'main' } }
+    ])
   ],
+  exports: [RouterModule]
 })
-export class MainModule {}
+export class MainModule { }

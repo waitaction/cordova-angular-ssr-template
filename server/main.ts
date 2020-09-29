@@ -9,8 +9,6 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.enableCors();
 
-
-
   const options = new DocumentBuilder()
     .setTitle('ng-nest-admin-api')
     .setDescription('The ng-nest-admin-api description')

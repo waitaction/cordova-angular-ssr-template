@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
-  EventEmitter,
-  Inject
-} from "@angular/core";
+import { Component, OnInit, ViewEncapsulation, EventEmitter, Inject } from "@angular/core";
 import * as _ from "lodash";
 import { FLOAT_NODE_OPTION } from "./float-node.type";
 import { Menu } from "../../index.service";
@@ -21,7 +15,7 @@ export class FloatNodeComponent implements OnInit {
   // 层级
   level: number = 0;
 
-  constructor(@Inject(FLOAT_NODE_OPTION) public option: Menu[] = []) {}
+  constructor(@Inject(FLOAT_NODE_OPTION) public option: Menu[] = []) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

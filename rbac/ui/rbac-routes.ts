@@ -33,7 +33,7 @@ export const shareRoutes: Routes = [
 // 顶级路由，指向框架页
 export const mainRoutes: Routes = [
   // 如果路由为空就指向 index
-  { path: '', redirectTo: environment.layout, pathMatch: 'full' },
+  { path: '', redirectTo: '/admin/index', pathMatch: 'full' },
   // 登录页
   {
     path: 'login',
@@ -53,7 +53,7 @@ export const mainRoutes: Routes = [
 // 框架页中对应的路由，指向具体的页面，框架页面中的路由都会带上顶级路由 index 如：/index/workplace
 export const layoutRoutes: Routes = [
   // 如果路由为空就指向配置的默认首页
-  { path: '', redirectTo: environment.defaultPage, pathMatch: 'full' },
+  { path: '', redirectTo: '/admin/home', pathMatch: 'full' },
   // 首页
   {
     path: 'home',

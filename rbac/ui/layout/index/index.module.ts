@@ -19,6 +19,7 @@ import { XLinkModule } from '@ng-nest/ui/link';
 import { XDrawerModule } from '@ng-nest/ui/drawer';
 import { XFormModule } from '@ng-nest/ui/form';
 import { XThemeModule } from '@ng-nest/ui/theme';
+import { FormsModule } from '@angular/forms';
 
 // 声明模块中拥有的视图类
 const components = [
@@ -48,8 +49,8 @@ const modules = [
 ];
 
 @NgModule({
-  imports: [...modules],
+  imports: [CommonModule, FormsModule, ...modules],
   declarations: [...components],
   exports: [...components]
 })
-export class IndexModule {}
+export class IndexModule { }

@@ -20,6 +20,7 @@ export class IndexComponent implements OnInit {
     private nav: NavService,
     private config: ConfigService) {
     this.nav.init();
+    this.config.init();
   }
 
   ngOnInit() { }

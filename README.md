@@ -13,3 +13,11 @@
     nswagger // 放置swagger配置代码
 
     hooks // 放置编译的相关代码
+
+
+规范一下url
+
+    http://*/api/app/*  // 自定义的app接口
+    http://*/api/rbac/*  // rbac权限系统的接口
+    http://*      // app的首页地址
+    http://*/admin // rbac权限系统的地址

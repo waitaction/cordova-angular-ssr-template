@@ -10,7 +10,7 @@ import { UploadService } from "./upload.service";
 import * as fs from "fs-extra";
 import { join } from "path";
 
-@Controller("upload")
+@Controller("rbac/upload")
 export class UploadController {
   rootPath = join(__dirname, "../../../upload");
   constructor(public readonly uploadService: UploadService) {}

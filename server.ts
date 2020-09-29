@@ -1,7 +1,8 @@
 import 'zone.js/dist/zone-node';
 import './server/main';
-export * from './src/main.server';
 import { XMLHttpRequest } from 'xmlhttprequest';
+export * from './src/main.server';
+
 
 (function fixedUniversal() {
     if (!((typeof window != 'undefined') && window)) {
