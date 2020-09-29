@@ -5,7 +5,7 @@ import { Action } from 'entities/action.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { XControllerService, XIdType, XQuery } from 'rbac/api/core';
 
-@Controller('roles')
+@Controller('rbac/roles')
 @UseGuards(AuthGuard('jwt'))
 export class RolesController extends XControllerService<Role, XQuery> {
   constructor(public rolesService: RolesService) {

@@ -4,7 +4,7 @@ import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
 import { XControllerService, XQuery } from 'rbac/api/core';
 
-@Controller('users')
+@Controller('rbac/users')
 @UseGuards(AuthGuard('jwt'))
 export class UsersController extends XControllerService<User, XQuery> {
   constructor(public readonly usersService: UsersService) {

@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
             this.nav.destroy();
             ReuseStrategyService.deleteRouteSnapshot();
             ReuseStrategyService.deleteRouteSnapshot(this.location.path());
-            this.router.navigate(["/login"]);
+            this.router.navigate(["/admin/login"]);
           }
         });
         break;

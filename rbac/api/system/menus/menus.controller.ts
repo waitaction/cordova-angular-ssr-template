@@ -4,7 +4,7 @@ import { MenusService } from './menus.service';
 import { AuthGuard } from '@nestjs/passport';
 import { XControllerService, XQuery } from 'rbac/api/core';
 
-@Controller('menus')
+@Controller('rbac/menus')
 @UseGuards(AuthGuard('jwt'))
 export class MenusController extends XControllerService<Menu, XQuery> {
   constructor(private readonly menusService: MenusService) {

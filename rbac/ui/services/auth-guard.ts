@@ -37,7 +37,7 @@ export class AuthGuard extends BaseUniversal implements CanActivate, CanActivate
       return true;
     }
     this.authService.redirectUrl = url;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/admin/login']);
     return false;
   }
 

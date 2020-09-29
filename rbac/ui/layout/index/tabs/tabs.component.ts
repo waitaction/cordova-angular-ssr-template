@@ -76,7 +76,7 @@ export class TabsComponent extends BaseUniversal implements OnInit {
       if (subRoot) {
         page += `/${subRoot}`;
       }
-      this.router.navigate([`/${environment.layout}/${page}`, param]);
+      this.router.navigate([`/admin/${environment.layout}/${page}`, param]);
     }
   }
 
@@ -138,7 +138,7 @@ export class TabsComponent extends BaseUniversal implements OnInit {
         this.nav.destroy();
         ReuseStrategyService.deleteRouteSnapshot();
         ReuseStrategyService.deleteRouteSnapshot(this.location.path());
-        this.router.navigate(['/login']);
+        this.router.navigate(['/admin/login']);
       }
     });
   }

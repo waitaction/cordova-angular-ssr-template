@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
     password: ['123qwe']
   });
 
-  constructor(public authService: AuthService, public router: Router, public formBuilder: FormBuilder, public message: XMessageService) {}
+  constructor(public authService: AuthService, public router: Router, public formBuilder: FormBuilder, public message: XMessageService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   // 登录
   login() {
@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
         this.authService.login(user).subscribe(
           () => {
             if (this.authService.isLoggedIn) {
-              let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : `/${environment.layout}`;
+              let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : `/admin/index`;
+              redirect = `/admin/index`;
               this.router.navigate([redirect]);
             }
           },
