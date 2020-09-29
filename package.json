@@ -64,6 +64,7 @@
     "swagger-ui-express": "^4.1.4",
     "tslib": "^1.10.0",
     "typeorm": "^0.2.26",
+    "xmlhttprequest": "^1.8.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

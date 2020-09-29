@@ -1,6 +1,5 @@
 import { Injector } from '@angular/core';
 import { Injectable } from '@angular/core';
-
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BaseUniversal } from 'src/app/base-universal';
@@ -51,7 +50,7 @@ export class AuthService extends BaseUniversal {
     public settingService: SettingService,
     public injector: Injector) {
     super(injector)
-    if (this.isBrowser) {
+    if (this.isClient) {
       if (this.user.account && this.user.token) {
         this.isLoggedIn = true;
       }

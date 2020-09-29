@@ -14,11 +14,13 @@ export class ConfigService extends BaseUniversal {
     return this._dark;
   }
   public set dark(value) {
-    this._dark = value;
-    this.setTheme();
-    this.setBodyClass();
-    this.settingService.setLocal('Dark', value);
-    this.darkChange.next(value);
+    if (this.isClient) {
+      this._dark = value;
+      this.setTheme();
+      this.setBodyClass();
+      this.settingService.setLocal('Dark', value);
+      this.darkChange.next(value);
+    }
   }
   darkChange = new BehaviorSubject<boolean>(this.dark);
   renderer: Renderer2;
@@ -30,34 +32,38 @@ export class ConfigService extends BaseUniversal {
     public injector: Injector
   ) {
     super(injector);
-    if (this.isBrowser) {
+    if (this.isClient) {
       this._dark = Boolean(this.settingService.getLocal('Dark')) || false;
       this.renderer = this.renderFac.createRenderer(null, null);
     }
 
   }
   init() {
-    if ((typeof window != 'undefined') && window) {
+    if (this.isClient) {
       this.dark = this._dark;
       this.setBodyClass();
     }
   }
 
   setTheme() {
-    if (this.dark) {
-      this.configService.setDarkTheme({ colors: X_THEME_DARK_COLORS });
-    } else {
-      this.configService.setLightTheme({ colors: X_THEME_COLORS });
+    if (this.isClient) {
+      if (this.dark) {
+        this.configService.setDarkTheme({ colors: X_THEME_DARK_COLORS });
+      } else {
+        this.configService.setLightTheme({ colors: X_THEME_COLORS });
+      }
     }
   }
 
   setBodyClass() {
-    if (this.dark) {
-      this.renderer.removeClass(this.doc.documentElement, 'x-light');
-      this.renderer.addClass(this.doc.documentElement, 'x-dark');
-    } else {
-      this.renderer.removeClass(this.doc.documentElement, 'x-dark');
-      this.renderer.addClass(this.doc.documentElement, 'x-light');
+    if (this.isClient) {
+      if (this.dark) {
+        this.renderer.removeClass(this.doc.documentElement, 'x-light');
+        this.renderer.addClass(this.doc.documentElement, 'x-dark');
+      } else {
+        this.renderer.removeClass(this.doc.documentElement, 'x-dark');
+        this.renderer.addClass(this.doc.documentElement, 'x-light');
+      }
     }
   }
 }

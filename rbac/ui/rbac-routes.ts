@@ -2,6 +2,14 @@ import { Routes } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { AuthGuard } from './services/auth-guard';
 
+function getAuthGuard() {
+  if ((typeof window != 'undefined') && window) {
+    return [AuthGuard];
+  } else {
+    return [];
+  }
+}
+
 // 公共路由
 export const shareRoutes: Routes = [
   // 没有权限的显示模块
@@ -35,8 +43,8 @@ export const mainRoutes: Routes = [
   {
     path: 'index',
     loadChildren: () => import('./layout/index/index.module').then((x) => x.IndexModule),
-    canActivateChild: [AuthGuard],
-    canLoad: [AuthGuard]
+    canActivateChild: [...getAuthGuard()],
+    canLoad: [...getAuthGuard()]
   },
 
   ...shareRoutes
@@ -50,7 +58,7 @@ export const layoutRoutes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./main/home/home.module').then((x) => x.HomeModule),
-    canLoad: [AuthGuard],
+    canLoad: [...getAuthGuard()],
     data: {
       animation: 'home'
     }
@@ -59,7 +67,7 @@ export const layoutRoutes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./main/dashboard/dashboard.module').then((x) => x.DashboardModule),
-    canLoad: [AuthGuard],
+    canLoad: [...getAuthGuard()],
     data: {
       animation: 'dashboard'
     }
@@ -68,7 +76,7 @@ export const layoutRoutes: Routes = [
   {
     path: 'users',
     loadChildren: () => import('./main/system/users/users.module').then((x) => x.UsersModule),
-    canLoad: [AuthGuard],
+    canLoad: [...getAuthGuard()],
     data: {
       animation: 'users'
     }
@@ -77,7 +85,7 @@ export const layoutRoutes: Routes = [
   {
     path: 'roles',
     loadChildren: () => import('./main/system/roles/roles.module').then((x) => x.RolesModule),
-    canLoad: [AuthGuard],
+    canLoad: [...getAuthGuard()],
     data: {
       animation: 'roles'
     }
@@ -86,7 +94,7 @@ export const layoutRoutes: Routes = [
   {
     path: 'organization',
     loadChildren: () => import('./main/system/organization/organization.module').then((x) => x.OrganizationModule),
-    canLoad: [AuthGuard],
+    canLoad: [...getAuthGuard()],
     data: {
       animation: 'organization'
     }
@@ -95,7 +103,7 @@ export const layoutRoutes: Routes = [
   {
     path: 'menus',
     loadChildren: () => import('./main/system/menus/menus.module').then((x) => x.MenusModule),
-    canLoad: [AuthGuard],
+    canLoad: [...getAuthGuard()],
     data: {
       animation: 'menus'
     }

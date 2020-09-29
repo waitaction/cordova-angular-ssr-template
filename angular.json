@@ -176,7 +176,8 @@
               "mysql",
               "jsonwebtoken",
               "passport",
-              "passport-jwt"
+              "passport-jwt",
+              "xmlhttprequest"
             ]
           },
           "configurations": {

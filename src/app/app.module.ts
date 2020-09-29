@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { AppRoutesModule } from './app-routing.module';
 import { UniversalStorageService } from 'src/app/core/universal-storage.service';
 import { CookieModule, TransferHttpModule, TransferHttpService } from '@gorniv/ngx-universal';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, XhrFactory } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { UniversalToolService } from 'src/app/core/universal-tool.service';
 import { ShareModule } from 'rbac/ui/share/share.module';
-
+import { ClientStateInterceptor } from './core/clientstate.interceptor';
+import { X_CONFIG } from '@ng-nest/ui/core';
+import { ServerXhr } from './core/ServerXhr';
 
 function fixedUniversal() {
   if (!((typeof window != 'undefined') && window)) {
@@ -41,7 +43,7 @@ fixedUniversal();
     // { provide: RouteReuseStrategy, useClass: LocalRouteReuseStrategy },
     UniversalStorageService,
     UniversalToolService,
-    // SessionUniversalStorageService
+    // { provide: BrowserXhr, useClass: ServerXhr },
   ],
   bootstrap: [AppComponent]
 })

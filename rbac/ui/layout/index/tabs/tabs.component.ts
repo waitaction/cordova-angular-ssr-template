@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
 import { IndexService, Menu } from '../index.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -11,13 +11,14 @@ import { ConfigService } from 'rbac/ui/services/config.service';
 import { FormGroup } from '@angular/forms';
 import { XControl } from '@ng-nest/ui/form';
 import { XColorsTheme, XBoolean } from '@ng-nest/ui/core';
+import { BaseUniversal } from 'src/app/base-universal';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   encapsulation: ViewEncapsulation.None
 })
-export class TabsComponent implements OnInit {
+export class TabsComponent extends BaseUniversal implements OnInit {
   get activatedIndex() {
     return this.indexService.session.tabsPage
       ? this.indexService.session.tabsPage.findIndex((x) => x.router === this.indexService.session.activatedPage)
@@ -49,14 +50,17 @@ export class TabsComponent implements OnInit {
     public auth: AuthService,
     public location: Location,
     public nav: NavService,
-    public config: ConfigService
-  ) {}
+    public config: ConfigService,
+    public injector: Injector
+  ) {
+    super(injector);
+  }
 
   ngOnInit() {
     this.settingDark = this.config.dark;
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   /**
    * tab点击事件

@@ -33,9 +33,6 @@ export class AuthGuard extends BaseUniversal implements CanActivate, CanActivate
   }
 
   checkLogin(url: string) {
-    if (this.isServer) {
-      return;
-    }
     if (this.authService.isLoggedIn || this.authService.user.token) {
       return true;
     }
@@ -45,9 +42,6 @@ export class AuthGuard extends BaseUniversal implements CanActivate, CanActivate
   }
 
   checkModule(route: Route) {
-    if (this.isServer) {
-      return;
-    }
     if (route.path === environment.layout || find(this.authService.user.permissions?.menus, (x) => x.router === route.path)) {
       return true;
     }
