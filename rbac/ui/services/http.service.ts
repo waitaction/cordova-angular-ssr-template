@@ -83,7 +83,7 @@ export class HttpService {
    */
   request(method: string, url: string, params?: any, isBody = false): Observable<any> {
     let option = {};
-    url = `${environment.api}${url}`;
+    url = `/api/rbac/${url}`;
     method = method.toUpperCase();
     if (['POST', 'PUT', 'DELETE'].indexOf(method) > -1 || isBody) {
       option = { body: params };

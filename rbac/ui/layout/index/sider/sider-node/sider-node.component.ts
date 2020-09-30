@@ -87,7 +87,7 @@ export class SiderNodeComponent implements OnInit {
   sider(option: Menu) {
     let tab = find(this.indexService.session.tabsPage, (x) => x.router == option.router);
     if (tab && tab.subPage) {
-      ReuseStrategyService.deleteRouteSnapshot(`/${environment.layout}/${option.router}`);
+      ReuseStrategyService.deleteRouteSnapshot(`/index/${option.router}`);
     }
     if (this.indexService.portal) {
       if (this.indexService.floatNode) this.indexService.floatNode.floatShow = false;

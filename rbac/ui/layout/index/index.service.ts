@@ -58,7 +58,7 @@ export class IndexService {
       this._local = Object.assign(
         <Local>{
           siderShrink: false,
-          defaultPage: environment.defaultPage
+          defaultPage: "home"
         },
         //this.settings.getLocal(this.key)
         this.universalStorage.getItem(this.key)
@@ -75,7 +75,7 @@ export class IndexService {
         ? this._local
         : <Local>{
           siderShrink: false,
-          defaultPage: environment.defaultPage
+          defaultPage: "home"
         },
       value
     );
@@ -87,7 +87,7 @@ export class IndexService {
     if (!this._session) {
       this._session = Object.assign(
         <Session>{
-          activatedPage: environment.defaultPage,
+          activatedPage: "home",
           tabsPage: []
         },
         this.settings.getSession(this.key)
@@ -103,7 +103,7 @@ export class IndexService {
       this._session
         ? this._session
         : <Session>{
-          activatedPage: environment.defaultPage,
+          activatedPage: "home",
           tabsPage: []
         },
       value
@@ -233,7 +233,7 @@ export class IndexService {
 
   floatChild(child: Menu[]) {
     return _.map(_.cloneDeep(child), (x) => {
-      x.router = x.router != null ? `./${environment.layout}/${x.router}` : x.router;
+      x.router = x.router != null ? `./index/${x.router}` : x.router;
       return x;
     });
   }

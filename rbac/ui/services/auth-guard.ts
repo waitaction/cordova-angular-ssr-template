@@ -42,10 +42,10 @@ export class AuthGuard extends BaseUniversal implements CanActivate, CanActivate
   }
 
   checkModule(route: Route) {
-    if (route.path === environment.layout || find(this.authService.user.permissions?.menus, (x) => x.router === route.path)) {
+    if (route.path === 'index' || find(this.authService.user.permissions?.menus, (x) => x.router === route.path)) {
       return true;
     }
-    this.router.navigate([`${environment.layout}/no-auth`]);
+    this.router.navigate([`index/no-auth`]);
     return false;
   }
 

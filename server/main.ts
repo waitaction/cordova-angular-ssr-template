@@ -3,6 +3,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger/dist/swagger-module';
 import { AppModule } from './app.module';
+import * as fs from 'fs';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -16,7 +17,9 @@ async function bootstrap() {
     .addTag('ng-nest-admin-api')
     .build();
   const document = SwaggerModule.createDocument(app, options);
+  fs.writeFileSync("./nswag/swagger.json", JSON.stringify(document));
   SwaggerModule.setup('swagger', app, document);
+
   await app.listen(process.env.PORT || 4000);
 }
 

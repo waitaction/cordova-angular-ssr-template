@@ -1,7 +1,8 @@
 import { Injectable, Get, Param, Post, Body, Put, Delete, ParseIntPipe } from '@nestjs/common';
 import { XRepositoryService } from './repository.service';
 import { XId, XResultList, XGroupItem, XQuery, XIdType } from '../interfaces';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('rbac权限系统接口')
 @Injectable()
 export class XControllerService<Entity extends XId, Query extends XQuery> {
   constructor(private readonly service: XRepositoryService<Entity, Query>) {}

@@ -76,7 +76,7 @@ export class TabsComponent extends BaseUniversal implements OnInit {
       if (subRoot) {
         page += `/${subRoot}`;
       }
-      this.router.navigate([`/admin/${environment.layout}/${page}`, param]);
+      this.router.navigate([`/admin/index/${page}`, param]);
     }
   }
 
@@ -94,7 +94,7 @@ export class TabsComponent extends BaseUniversal implements OnInit {
       if (x.router === tab.router) deleteIndex = index;
       return x.router === tab.router;
     });
-    ReuseStrategyService.deleteRouteSnapshot(`/${environment.layout}/${tab.router}`);
+    ReuseStrategyService.deleteRouteSnapshot(`/index/${tab.router}`);
     this.indexService.session = { tabsPage: tabsPage };
     this.indexService.session.tabsPage = [...tabsPage];
 

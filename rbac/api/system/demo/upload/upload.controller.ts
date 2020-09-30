@@ -9,7 +9,8 @@ import { AnyFilesInterceptor } from "@nestjs/platform-express";
 import { UploadService } from "./upload.service";
 import * as fs from "fs-extra";
 import { join } from "path";
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('rbac权限系统接口')
 @Controller("rbac/upload")
 export class UploadController {
   rootPath = join(__dirname, "../../../upload");

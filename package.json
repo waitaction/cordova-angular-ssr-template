@@ -23,7 +23,9 @@
     "serve:ssr": "node www/server/main.js",
     "build:ssr": "ng build --prod && ng run app:server:production",
     "prerender": "ng run app:prerender",
-    "prebuild:ssr": "ngcc"
+    "prebuild:ssr": "ngcc",
+    "nswag": "cd nswag && \"../node_modules/.bin/nswag\" run && cd ..",
+    "build:nswag": "node ./hooks/compile-hook/build-nswag.js"
   },
   "dependencies": {
     "@angular/animations": "~9.1.11",
@@ -90,6 +92,7 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "nswag": "^13.8.1",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
