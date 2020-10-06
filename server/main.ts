@@ -4,11 +4,13 @@ import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger/dist/swagger-module';
 import { AppModule } from './app.module';
 import * as fs from 'fs';
+import { join } from 'path'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix('api');
   app.enableCors();
+  //  app.setBaseViewsDir(join(__dirname, '..', 'browser'));
 
   const options = new DocumentBuilder()
     .setTitle('ng-nest-admin-api')

@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ConfigService } from 'rbac/ui/services/config.service';
 import { openCloseAnimate } from './app-router.animations';
 
 @Component({

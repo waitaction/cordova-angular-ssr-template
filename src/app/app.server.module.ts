@@ -3,8 +3,6 @@ import { ServerModule, ServerTransferStateModule } from '@angular/platform-serve
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { CookieService, CookieBackendService } from '@gorniv/ngx-universal';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ServerStateInterceptor } from './core/serverstate.interceptor';
 
 @NgModule({
   imports: [
@@ -16,8 +14,7 @@ import { ServerStateInterceptor } from './core/serverstate.interceptor';
     AppComponent
   ],
   providers: [
-    { provide: CookieService, useClass: CookieBackendService },
-    { provide: HTTP_INTERCEPTORS, useClass: ServerStateInterceptor, multi: true }
+    { provide: CookieService, useClass: CookieBackendService }
   ],
 })
 export class AppServerModule { }

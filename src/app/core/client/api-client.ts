@@ -11,18 +11,16 @@ import { mergeMap as _observableMergeMap, catchError as _observableCatch } from 
 import { Observable, throwError as _observableThrow, of as _observableOf } from 'rxjs';
 import { Injectable, Inject, Optional, InjectionToken } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angular/common/http';
-import { BaseApiClient, blobToText } from './base-api-client';
 
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
 @Injectable()
-export class CatsClient extends BaseApiClient {
+export class CatsClient {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
     constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        super();
         this.http = http;
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
@@ -87,19 +85,18 @@ export class CatsClient extends BaseApiClient {
 }
 
 @Injectable()
-export class RbacClient extends BaseApiClient {
+export class AdminClient {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
     constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        super();
         this.http = http;
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
 
     upload(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/upload";
+        let url_ = this.baseUrl + "/api/admin/upload";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -143,7 +140,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     usersPost(index: number, size: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/users/{size}/{index}";
+        let url_ = this.baseUrl + "/api/admin/users/{size}/{index}";
         if (index === undefined || index === null)
             throw new Error("The parameter 'index' must be defined.");
         url_ = url_.replace("{index}", encodeURIComponent("" + index));
@@ -193,7 +190,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     usersGet(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/users/{id}";
+        let url_ = this.baseUrl + "/api/admin/users/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -237,7 +234,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     usersDelete(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/users/{id}";
+        let url_ = this.baseUrl + "/api/admin/users/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -281,7 +278,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     usersPost(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/users";
+        let url_ = this.baseUrl + "/api/admin/users";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -325,7 +322,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     usersPut(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/users";
+        let url_ = this.baseUrl + "/api/admin/users";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -369,7 +366,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     rolesPost(index: number, size: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/roles/{size}/{index}";
+        let url_ = this.baseUrl + "/api/admin/roles/{size}/{index}";
         if (index === undefined || index === null)
             throw new Error("The parameter 'index' must be defined.");
         url_ = url_.replace("{index}", encodeURIComponent("" + index));
@@ -419,7 +416,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     rolesGet(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/roles/{id}";
+        let url_ = this.baseUrl + "/api/admin/roles/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -463,7 +460,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     rolesDelete(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/roles/{id}";
+        let url_ = this.baseUrl + "/api/admin/roles/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -507,7 +504,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     rolesPost(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/roles";
+        let url_ = this.baseUrl + "/api/admin/roles";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -551,7 +548,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     rolesPut(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/roles";
+        let url_ = this.baseUrl + "/api/admin/roles";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -595,7 +592,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     menusPost(index: number, size: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/menus/{size}/{index}";
+        let url_ = this.baseUrl + "/api/admin/menus/{size}/{index}";
         if (index === undefined || index === null)
             throw new Error("The parameter 'index' must be defined.");
         url_ = url_.replace("{index}", encodeURIComponent("" + index));
@@ -645,7 +642,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     menusGet(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/menus/{id}";
+        let url_ = this.baseUrl + "/api/admin/menus/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -689,7 +686,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     menusDelete(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/menus/{id}";
+        let url_ = this.baseUrl + "/api/admin/menus/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -733,7 +730,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     menusPost(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/menus";
+        let url_ = this.baseUrl + "/api/admin/menus";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -777,7 +774,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     menusPut(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/menus";
+        let url_ = this.baseUrl + "/api/admin/menus";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -821,7 +818,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     actionsPost(index: number, size: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/actions/{size}/{index}";
+        let url_ = this.baseUrl + "/api/admin/actions/{size}/{index}";
         if (index === undefined || index === null)
             throw new Error("The parameter 'index' must be defined.");
         url_ = url_.replace("{index}", encodeURIComponent("" + index));
@@ -871,7 +868,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     actionsGet(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/actions/{id}";
+        let url_ = this.baseUrl + "/api/admin/actions/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -915,7 +912,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     actionsDelete(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/actions/{id}";
+        let url_ = this.baseUrl + "/api/admin/actions/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -959,7 +956,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     actionsPost(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/actions";
+        let url_ = this.baseUrl + "/api/admin/actions";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1003,7 +1000,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     actionsPut(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/actions";
+        let url_ = this.baseUrl + "/api/admin/actions";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1047,7 +1044,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     organizationPost(index: number, size: number): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/organization/{size}/{index}";
+        let url_ = this.baseUrl + "/api/admin/organization/{size}/{index}";
         if (index === undefined || index === null)
             throw new Error("The parameter 'index' must be defined.");
         url_ = url_.replace("{index}", encodeURIComponent("" + index));
@@ -1097,7 +1094,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     organizationGet(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/organization/{id}";
+        let url_ = this.baseUrl + "/api/admin/organization/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1141,7 +1138,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     organizationDelete(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/organization/{id}";
+        let url_ = this.baseUrl + "/api/admin/organization/{id}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1185,7 +1182,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     organizationPost(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/organization";
+        let url_ = this.baseUrl + "/api/admin/organization";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1229,7 +1226,7 @@ export class RbacClient extends BaseApiClient {
     }
 
     organizationPut(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/organization";
+        let url_ = this.baseUrl + "/api/admin/organization";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1274,19 +1271,18 @@ export class RbacClient extends BaseApiClient {
 }
 
 @Injectable()
-export class RolesClient extends BaseApiClient {
+export class RolesClient {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
     constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        super();
         this.http = http;
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
 
     actionsGet(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/roles/actions/{id}/{menuId}";
+        let url_ = this.baseUrl + "/api/admin/roles/actions/{id}/{menuId}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1330,7 +1326,7 @@ export class RolesClient extends BaseApiClient {
     }
 
     actionsPut(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/roles/actions/{id}/{menuId}";
+        let url_ = this.baseUrl + "/api/admin/roles/actions/{id}/{menuId}";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1375,19 +1371,18 @@ export class RolesClient extends BaseApiClient {
 }
 
 @Injectable()
-export class AuthClient extends BaseApiClient {
+export class AuthClient {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
     constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        super();
         this.http = http;
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
 
     login(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/auth/login";
+        let url_ = this.baseUrl + "/api/admin/auth/login";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1431,7 +1426,7 @@ export class AuthClient extends BaseApiClient {
     }
 
     menus(): Observable<void> {
-        let url_ = this.baseUrl + "/api/rbac/auth/menus";
+        let url_ = this.baseUrl + "/api/admin/auth/menus";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1506,3 +1501,18 @@ function throwException(message: string, status: number, response: string, heade
         return _observableThrow(new ApiException(message, status, response, headers, null));
 }
 
+function blobToText(blob: any): Observable<string> {
+    return new Observable<string>((observer: any) => {
+        if (!blob) {
+            observer.next("");
+            observer.complete();
+        } else {
+            let reader = new FileReader();
+            reader.onload = event => {
+                observer.next((<any>event.target).result);
+                observer.complete();
+            };
+            reader.readAsText(blob);
+        }
+    });
+}

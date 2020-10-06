@@ -2,15 +2,11 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { UniversalStorageService } from 'src/app/core/universal-storage.service';
 import { CookieModule, TransferHttpModule, TransferHttpService } from '@gorniv/ngx-universal';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { UniversalToolService } from 'src/app/core/universal-tool.service';
-import { ShareModule } from 'rbac/ui/share/share.module';
-import { ClientStateInterceptor } from './core/clientstate.interceptor';
+import { ShareModule } from 'admin/ui/share/share.module';
 import { AppRoutingModule } from './app-routing.module';
-
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,10 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
     ShareModule
   ],
   providers: [
-    TransferHttpService,
-    UniversalStorageService,
-    UniversalToolService,
-    { provide: HTTP_INTERCEPTORS, useClass: ClientStateInterceptor, multi: true }
+    TransferHttpService
   ],
   bootstrap: [AppComponent]
 })
