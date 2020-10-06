@@ -1,3 +1,5 @@
+重构中...
+
 # 全栈平台
 
  **一套框架，多种平台**
@@ -39,14 +41,14 @@
 
 ## 构建命令
 
-| 命令                      | 描述                                                                       |
-| ------------------------- | -------------------------------------------------------------------------- |
-| npm run start:browser:dev | 调试浏览器, 建议使用PowerShell命令窗口，较稳定(服务端调试需在vscode打断点) |
-| npm run build:browser     | 编译可发布的浏览器应用                                                     |
-| npm run start:android:dev | 调试安卓应用(需使用真机)                                                   |
-| npm run build:android     | 编译安卓应用                                                               |
-| npm run start:ios:dev     | 调试苹果应用                                                               |
-| npm run build:ios         | 编译苹果应用(需配置开发者签名)                                             |
+| 命令                      | 描述                                 |
+| ------------------------- | ------------------------------------ |
+| npm run start:browser:dev | 调试浏览器, 调试接口需在vscode打断点 |
+| npm run build:browser     | 编译可发布的浏览器应用               |
+| npm run start:android:dev | 调试安卓应用(需使用真机)             |
+| npm run build:android     | 编译安卓应用                         |
+| npm run start:ios:dev     | 调试苹果应用                         |
+| npm run build:ios         | 编译苹果应用(需配置开发者签名)       |
 
 ### 如何调试
 
