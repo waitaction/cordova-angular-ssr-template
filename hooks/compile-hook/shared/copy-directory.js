@@ -1,4 +1,4 @@
-var copyFolder = require('./shared/hook-fs').copyFolder;
+var copyFolder = require('./hook-fs').copyFolder;
 // 读取参数
 var targetDirPath = null;
 var sourceDirPath = null;
