@@ -4,19 +4,17 @@ import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger/dist/swagger-module';
 import { AppModule } from './app.module';
 import * as fs from 'fs';
-import { join } from 'path'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix('api');
   app.enableCors();
-  //  app.setBaseViewsDir(join(__dirname, '..', 'browser'));
 
   const options = new DocumentBuilder()
-    .setTitle('ng-nest-admin-api')
-    .setDescription('The ng-nest-admin-api description')
+    .setTitle('api')
+    .setDescription('接口文档')
     .setVersion('1.0')
-    .addTag('ng-nest-admin-api')
+    // .addTag('api')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   fs.writeFileSync("./nswag/swagger.json", JSON.stringify(document));
