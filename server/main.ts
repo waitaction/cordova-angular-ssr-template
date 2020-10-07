@@ -4,21 +4,24 @@ import { DocumentBuilder } from '@nestjs/swagger/dist/document-builder';
 import { SwaggerModule } from '@nestjs/swagger/dist/swagger-module';
 import { AppModule } from './app.module';
 import * as fs from 'fs';
+import { environment } from 'src/environments/environment';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix('api');
   app.enableCors();
 
-  const options = new DocumentBuilder()
-    .setTitle('api')
-    .setDescription('接口文档')
-    .setVersion('1.0')
-    // .addTag('api')
-    .build();
+  const options = new DocumentBuilder().setTitle('api').setDescription('接口文档').setVersion('1.0').build();
   const document = SwaggerModule.createDocument(app, options);
-  fs.writeFileSync("./nswag/swagger.json", JSON.stringify(document));
+
+  if (!environment.production) {
+    fs.writeFileSync("./nswag/swagger.json", JSON.stringify(document));
+  }
+
   SwaggerModule.setup('swagger', app, document);
+  setTimeout(() => {
+    console.info(`*** 启动服务器：http://0.0.0.0:${process.env.PORT || 4000} ***`);
+  }, 0);
 
   await app.listen(process.env.PORT || 4000);
 }

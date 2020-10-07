@@ -16,7 +16,7 @@ import { AngularUniversalModule } from '@waitaction/nestjs-ng-universal/dist/ang
   imports: [
     AngularUniversalModule.forRoot({
       bootstrap: AppServerModule,
-      viewsPath: join(process.cwd(), 'dist/app/browser'),
+      viewsPath: join(process.cwd(), 'www/browser'),
       useEjsEngine: true, // 标记为使用ejs引擎，不在服务端渲染
       extraProviders: []
     }),
