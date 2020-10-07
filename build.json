@@ -2,9 +2,9 @@
     "android": {
         "release": {
             "keystore": "app.keystore",
-            "alias": "app.keystore",
-            "storePassword": "12345678",
-            "password": "12345678"
+            "alias": "app",
+            "storePassword": "123456abc",
+            "password": "123456abc"
         }
     },
     "ios": {

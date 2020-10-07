@@ -41,27 +41,27 @@
 
 ## 构建命令
 
-| 命令                      | 描述                                 |
-| ------------------------- | ------------------------------------ |
-| npm run start:browser:dev | 调试浏览器, 调试接口需在vscode打断点 |
-| npm run build:browser     | 编译可发布的浏览器应用               |
-| npm run start:android:dev | 调试安卓应用(需使用真机)             |
-| npm run build:android     | 编译安卓应用                         |
-| npm run start:ios:dev     | 调试苹果应用                         |
-| npm run build:ios         | 编译苹果应用(需配置开发者签名)       |
+| 命令                  | 描述                                 |
+| --------------------- | ------------------------------------ |
+| npm run debug:browser | 调试浏览器, 调试接口需在vscode打断点 |
+| npm run build:browser | 编译可发布的浏览器应用               |
+| npm run debug:android | 调试安卓应用(需使用真机)             |
+| npm run build:android | 编译安卓应用                         |
+| npm run debug:ios     | 调试苹果应用                         |
+| npm run build:ios     | 编译苹果应用(需配置开发者签名)       |
 
 ### 如何调试
 
 浏览器端调试
 
 ``` bash
-npm run start:browser:dev
+npm run debug:browser
 ```
 
 如果需要查看安卓的执行情况，请将安卓手机连接开发机，并且已开启开发者模式，使用下面的命令
 
 ``` bash
-npm run start:android:dev
+npm run debug:android
 ```
 
 ### 客户端编译配置
@@ -75,3 +75,6 @@ npm run start:android:dev
 [iOS编译配置官方参考文档](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html)
 
 [桌面应用编译配置官方参考文档](https://cordova.apache.org/docs/en/latest/guide/platforms/electron/index.html)
+
+
+

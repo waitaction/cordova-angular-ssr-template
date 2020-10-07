@@ -8,7 +8,7 @@ var dateFormat = require('./shared/hook-fs').dateFormat;
 
 // 删除www文件 ， 创建www文件夹 ，拷贝index.html到www文件夹
 console.log('*** 清理缓存 ***');
-let www_folder = 'ios';
+let www_folder = 'www';
 if (fs.existsSync(www_folder)) {
     deleteFolder(www_folder);
 }

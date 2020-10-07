@@ -10,5 +10,12 @@ if (environment.production) {
 
 document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+    .catch(err => console.error(err))
+    .finally(() => {
+      setTimeout(() => {
+        let script = document.createElement('script');
+        script.src = 'cordova.js';
+        document.getElementsByTagName('body')[0].append(script);
+      }, 0);
+    });
 });

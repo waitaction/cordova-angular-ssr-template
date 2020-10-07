@@ -22,7 +22,6 @@ async function bootstrap() {
   setTimeout(() => {
     console.info(`*** 启动服务器：http://0.0.0.0:${process.env.PORT || 4000} ***`);
   }, 0);
-
   await app.listen(process.env.PORT || 4000);
 }
 

@@ -1,10 +1,10 @@
-/// 调试浏览器程序
+/// 调试安卓程序
 
 var fs = require('fs');
 const child_process = require('child_process');
 var deleteFolder = require('./shared/hook-fs').deleteFolder;
 
-// 删除www文件 ， 创建www文件夹 ，拷贝index.html到www文件夹
+// 删除www文件，创建www文件夹 ，拷贝index.html到www文件夹
 console.log('*** 清理缓存 ***');
 let www_folder = 'www';
 if (fs.existsSync(www_folder)) {
@@ -14,7 +14,7 @@ fs.mkdirSync(www_folder);
 
 try {
     var cdvResult = child_process.execSync('cordova platform').toString();
-    if (/browser[\s\S]*Available/ig.test(cdvResult)) {
+    if (/android[\s\S]*Available/ig.test(cdvResult)) {
         console.log('*** 已经安装cordova-android ***');
     } else {
         console.log('*** 正在安装cordova-android ***');
@@ -26,7 +26,7 @@ try {
 
 // 编译angular ng build
 console.log('*** 执行编译 ng run app:build ***');
-child_process.execSync('ng run app:build', { stdio: [0, 1, 2] });
+child_process.execSync('ng run app:build --output-path=www', { stdio: [0, 1, 2] });
 
 // 编译cordova run android --device --verbose
 console.log('*** 启动调试 cordova run android ***');
