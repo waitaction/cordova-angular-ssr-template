@@ -34,5 +34,24 @@
     "browser": {
         "debug": {},
         "release": {}
+    },
+    "electron": {
+        "mac": {
+            "package": [
+                "dmg"
+            ]
+        },
+        "linux": {
+            "package": [
+                "rpm",
+                "deb",
+                "tar.gz"
+            ]
+        },
+        "windows": {
+            "package": [
+                "msi"
+            ]
+        }
     }
 }
