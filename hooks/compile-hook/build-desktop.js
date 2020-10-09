@@ -21,7 +21,7 @@ try {
         console.log('*** 已经安装electron ***');
     } else {
         console.log('*** 正在安装electron ***');
-        child_process.execSync('cordova platform add electron', { stdio: [0, 1, 2] });
+        child_process.execSync('cordova platform add electron@latest', { stdio: [0, 1, 2] });
     }
 } catch (error) {
     console.log(error);

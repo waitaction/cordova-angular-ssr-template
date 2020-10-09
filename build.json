@@ -39,19 +39,22 @@
         "mac": {
             "package": [
                 "dmg"
-            ]
+            ],
+            "arch": [ "x64" ]
         },
         "linux": {
             "package": [
                 "rpm",
                 "deb",
                 "tar.gz"
-            ]
+            ],
+            "arch": [ "x64" ]
         },
         "windows": {
             "package": [
                 "msi"
-            ]
+            ],
+            "arch": [ "x64" ]
         }
     }
 }
