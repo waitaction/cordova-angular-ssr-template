@@ -1,4 +1,4 @@
-/// 调试ios程序
+/// 调试desktop程序
 var fs = require('fs');
 const child_process = require('child_process');
 var deleteFolder = require('./shared/hook-fs').deleteFolder;
@@ -30,9 +30,9 @@ console.log('*** 执行编译 ng build ***');
 child_process.execSync('ng run app:build --output-path=www', { stdio: [0, 1, 2] });
 
 // 编译cordova
-console.log('*** 启动调试 cordova run electron --emulator ***');
+console.log('*** 启动调试 cordova run electron --nobuild ***');
 try {
-    child_process.execSync('cordova run electron --emulator --verbose', { stdio: [0, 1, 2] });
+    child_process.execSync('cordova run electron --debug --verbose', { stdio: [0, 1, 2] });
 } catch (error) {
     console.log('');
     console.info("\033[31m *** 运行失败，请查看错误描述信息 *** \033[0m");

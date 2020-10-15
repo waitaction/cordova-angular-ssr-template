@@ -1,4 +1,4 @@
-/// 调试浏览器程序
+/// 调试desktop程序
 
 var fs = require('fs');
 const child_process = require('child_process');
