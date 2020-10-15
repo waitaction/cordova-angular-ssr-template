@@ -12,7 +12,8 @@
     "build:desktop": "node ./hooks/compile-hook/build-desktop.js",
     "build:all": "node ./hooks/compile-hook/build-all.js",
     "stats": "ng build --prod --stats-json && webpack-bundle-analyzer www/stats-es2015.json",
-    "nswag": "cd nswag && \"../node_modules/.bin/nswag\" run && cd .."
+    "nswag": "cd nswag && \"../node_modules/.bin/nswag\" run && cd ..",
+    "db:model": "typeorm-model-generator -h localhost -d demo-ssr -u root -x 123456abc -e mysql -o ."
   },
   "dependencies": {
     "@angular/animations": "~9.1.11",
