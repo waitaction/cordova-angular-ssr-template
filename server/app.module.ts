@@ -28,7 +28,7 @@ import { AngularUniversalModule } from '@waitaction/nestjs-ng-universal/dist/ang
       password: "123456abc",
       database: "demo-ssr",
       entities: [Action, Menu, Organization, Role, User],
-      synchronize: true,
+      synchronize: false,
       logging: ["query", "error"]
     }),
     SystemModule,
