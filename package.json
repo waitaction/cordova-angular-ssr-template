@@ -28,7 +28,7 @@
     "@antv/g2plot": "^1.1.28",
     "@gorniv/ngx-universal": "^2.2.2",
     "@nestjs/common": "^6.0.0",
-    "@nestjs/core": "^6.0.0",
+    "@nestjs/core": "^9.0.5",
     "@nestjs/passport": "^7.1.0",
     "@nestjs/platform-express": "^6.0.0",
     "@nestjs/swagger": "^4.6.1",
